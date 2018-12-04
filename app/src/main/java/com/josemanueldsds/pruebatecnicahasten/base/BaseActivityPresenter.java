@@ -27,7 +27,7 @@ public abstract class BaseActivityPresenter<V extends BaseActivityContract.IView
         dispose();
     }
 
-    protected void addTocompositeDisposable(Disposable disposable) {
+    protected void addToCompositeDisposable(Disposable disposable) {
         if (compositeDisposable == null) {
             compositeDisposable = new CompositeDisposable();
         }

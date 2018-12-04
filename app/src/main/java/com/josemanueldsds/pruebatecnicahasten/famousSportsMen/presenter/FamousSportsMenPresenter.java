@@ -28,8 +28,8 @@ public class FamousSportsMenPresenter extends BaseActivityPresenter<FamousSports
 
     @Override
     public void retrieveFamousSportsMenList() {
-        addTocompositeDisposable(interactor.requestFamousSportsMenList()
-                .subscribeOn(Schedulers.io())
+        addToCompositeDisposable(interactor.requestFamousSportsMenList()
+                .subscribeOn(Schedulers.trampoline())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<List<Player>>() {
                     @Override

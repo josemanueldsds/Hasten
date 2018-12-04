@@ -1,4 +1,4 @@
-package com.josemanueldsds.pruebatecnicahasten.famousSportsMen;
+package com.josemanueldsds.pruebatecnicahasten.famousSportsMen.adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.AppCompatImageView;

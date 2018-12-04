@@ -8,7 +8,7 @@ import android.widget.Toast;
 import com.josemanueldsds.pruebatecnicahasten.R;
 import com.josemanueldsds.pruebatecnicahasten.base.ApplicationComponent;
 import com.josemanueldsds.pruebatecnicahasten.base.BaseActivity;
-import com.josemanueldsds.pruebatecnicahasten.famousSportsMen.PlayerAdapter;
+import com.josemanueldsds.pruebatecnicahasten.famousSportsMen.adapter.PlayerAdapter;
 import com.josemanueldsds.pruebatecnicahasten.famousSportsMen.contract.FamousSportsMenContract;
 import com.josemanueldsds.pruebatecnicahasten.famousSportsMen.dagger.module.FamousSportsMenModule;
 import com.josemanueldsds.pruebatecnicahasten.http.models.Player;

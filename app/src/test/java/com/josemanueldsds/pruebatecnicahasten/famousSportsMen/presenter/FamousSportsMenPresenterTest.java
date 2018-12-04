@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
@@ -18,8 +19,6 @@ import java.util.List;
 import io.reactivex.Observable;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 /**
  * FamousSportsMenPresenterTest
@@ -31,13 +30,13 @@ import static org.mockito.Mockito.when;
 public class FamousSportsMenPresenterTest {
 
     @InjectMocks
-    FamousSportsMenPresenter presenter;
+    private FamousSportsMenPresenter presenter;
 
     @Mock
-    FamousSportsMenContract.IView viewMock;
+    private FamousSportsMenContract.IView viewMock;
 
     @Mock
-    FamousSportsMenContract.IInteractor interactorMock;
+    private FamousSportsMenContract.IInteractor interactorMock;
 
     @Before
     public void setUp() {
@@ -51,30 +50,31 @@ public class FamousSportsMenPresenterTest {
         Player player = new Player();
         List<Player> playerList = new ArrayList<>();
         playerList.add(player);
-        when(interactorMock.requestFamousSportsMenList()).thenReturn(Observable.just(playerList));
+        Mockito.when(interactorMock.requestFamousSportsMenList()).thenReturn(Observable.just(playerList));
         presenter.retrieveFamousSportsMenList();
         // Then
-        verify(interactorMock).requestFamousSportsMenList();
+        Mockito.verify(interactorMock).requestFamousSportsMenList();
     }
 
     @Test
     public void whenCallRetrieveFamousSportsMenList_thenCallLoadFamousSportsMenList() {
         // When
         Player player = new Player();
-        List<Player> playerList = new ArrayList<>();
+        final List<Player> playerList = new ArrayList<>();
         playerList.add(player);
-        when(interactorMock.requestFamousSportsMenList()).thenReturn(Observable.just(playerList));
+
+        Mockito.when(interactorMock.requestFamousSportsMenList()).thenReturn(Observable.just(playerList));
         presenter.retrieveFamousSportsMenList();
         // Then
-        verify(viewMock).loadFamousSportsMenList(playerList);
+        Mockito.verify(viewMock).loadFamousSportsMenList(playerList);
     }
 
     @Test
     public void whenCallRetrieveFamousSportsMenList_thenCallErrorLoadFamousSportsMenList() {
         // When
-        when(interactorMock.requestFamousSportsMenList()).thenReturn(Observable.<List<Player>>error(any(Exception.class)));
+        Mockito.when(interactorMock.requestFamousSportsMenList()).thenReturn(Observable.<List<Player>>error(new Throwable()));
         presenter.retrieveFamousSportsMenList();
         // Then
-        verify(viewMock).errorLoadFamousSportsMenList(any(Exception.class));
+        Mockito.verify(viewMock).errorLoadFamousSportsMenList(any(Throwable.class));
     }
 }
